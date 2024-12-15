@@ -21,11 +21,8 @@ public class PlayerService {
     public List<Player> getPlayers() {
         return playerRepository.findAll();
     }
-    public List<Player> getPlayersByTeam(String team) {
-            return  playerRepository.findAll().stream()
-                    .filter(Player->team.equals(Player.getTeam_name())).collect(Collectors.toList());
 
-    }
+
 
     public List<Player> getPlayersByName(String searchText) {
 
@@ -33,20 +30,35 @@ public class PlayerService {
                 .filter(Player->Player.getName().toLowerCase().contains(searchText.toLowerCase()))
                 .collect(Collectors.toList());
 
-
     }
 
-    public List<Player> getPlayersByPosition(String searchText) {
+   public List<Player> getPlayersByTeam(String searchText) {
         return playerRepository.findAll().stream()
-                .filter(Player->Player.getPosition().toLowerCase().contains(searchText.toLowerCase()))
+                .filter(Player-> Player.getTeam_name().toLowerCase().contains(searchText.toLowerCase()))
+                .collect(Collectors.toList());
+   }
+
+
+    public List<Player> getPlayersByPosition(String searchText) {
+
+        return playerRepository.findAll().stream()
+                .filter(Player -> Player.getPosition().toLowerCase().contains(searchText.toLowerCase()))
                 .collect(Collectors.toList());
     }
     public List<Player> getPlayersByNation(String searchText) {
-    return playerRepository.findAll().stream()
-            .filter(Player->Player.getNation().toLowerCase().contains(searchText.toLowerCase()))
-            .collect(Collectors.toList());
-
+        System.out.println("Searching players by nation: " + searchText);
+        return playerRepository.findAll().stream()
+                .filter(Player -> {
+                    if (Player.getNation() == null) {
+                        System.out.println("Player with null nation found: " + Player.getName());
+                        return false;
+                    }
+                    return Player.getNation().toLowerCase().contains(searchText.toLowerCase());
+                })
+                .collect(Collectors.toList());
     }
+
+
 
     public List<Player> getPlayersByTeamAndPosition(String position, String team) {
         return playerRepository.findAll().stream()

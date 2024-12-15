@@ -30,9 +30,6 @@ public class Player {
     @Column(name="starts")
     private Integer starts;
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     @Column(name="goals")
     private Double goals;
@@ -85,6 +82,10 @@ public class Player {
 
     public Double getExpected_assists() {
         return expected_assists;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Double getExpected_goals() {

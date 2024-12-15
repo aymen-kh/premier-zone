@@ -31,15 +31,17 @@ public class PlayerController {
         if (team != null){
             return playerService.getPlayersByTeam(team);
         }
-       else  if (name != null){
+      else   if (name != null){
             return playerService.getPlayersByName(name);
         }
-       else if  (position != null){
+    else    if  (position != null){
             return playerService.getPlayersByPosition(position);
         }
-     else  if (nation!= null){
+
+  else      if (nation != null) {
             return playerService.getPlayersByNation(nation);
         }
+
 else     return playerService.getPlayers();
 
 
