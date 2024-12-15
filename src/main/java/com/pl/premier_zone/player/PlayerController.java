@@ -64,6 +64,7 @@ else     return playerService.getPlayers();
       public ResponseEntity<String> deletePlayer(@PathVariable String PlayerName) {
         playerService.deletePlayer(PlayerName);
         return new ResponseEntity<>("Player deleted Successfully ",HttpStatus.OK);
+
     }
 
 }
