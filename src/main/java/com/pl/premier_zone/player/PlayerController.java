@@ -60,4 +60,10 @@ else     return playerService.getPlayers();
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
 }
+@PutMapping("/{PlayerName}")
+      public ResponseEntity<String> deletePlayer(@PathVariable String PlayerName) {
+        playerService.deletePlayer(PlayerName);
+        return new ResponseEntity<>("Player deleted Successfully ",HttpStatus.OK);
+    }
+
 }
