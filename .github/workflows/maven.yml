@@ -56,8 +56,8 @@ jobs:
 
       - name: Run Application
         env:
-          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/testdb
-          SPRING_DATASOURCE_USERNAME: postgres
-          SPRING_DATASOURCE_PASSWORD: password
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/prem_stats
+          SPRING_DATASOURCE_USERNAME: aymen
+          SPRING_DATASOURCE_PASSWORD: aymen
         run: java -jar target/*.jar
 
