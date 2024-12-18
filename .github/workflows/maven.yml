@@ -59,5 +59,10 @@ jobs:
           SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/prem_stats
           SPRING_DATASOURCE_USERNAME: aymen
           SPRING_DATASOURCE_PASSWORD: aymen
-        run: mvn spring-boot:run
+        run: |
+                mvn spring-boot:run &
+                APP_PID=$!
+                sleep 12  # Allow it to run for 10 seconds to confirm it starts
+                kill $APP_PID
+
 
